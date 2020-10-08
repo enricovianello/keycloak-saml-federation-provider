@@ -27,6 +27,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>saml-aggregate-provider</finalName>
 	</build>
 
 	<dependencies>

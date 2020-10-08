@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+#      - KEYCLOAK_LOGLEVEL=DEBUG
+    volumes:
+      - ../src/main/resources/themes/base/admin/resources/partials/realm-identity-provider-saml-aggregate.html:/opt/jboss/keycloak/themes/base/admin/resources/partials/realm-identity-provider-saml-aggregate.html
+      - ../target/saml-aggregate-provider.jar:/opt/jboss/keycloak/standalone/deployments/saml-aggregate-provider.jar
+    cap_add:
+      - SYS_ADMIN
+    ports:
+      - 8088:8080
+    privileged: true
